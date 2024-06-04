@@ -9,6 +9,6 @@ namespace Repositories
 {
     public interface ICarJsonRepository
     {
-        bool Insert(List<Car> cars);
+        bool InsertJson(List<Car> cars);
     }
 }

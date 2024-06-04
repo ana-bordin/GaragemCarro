@@ -1,22 +1,23 @@
-﻿using Models;
+﻿using Controllers;
+using Models;
 using Utilities;
 
 namespace Main
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static List<Car> cars = new List<Car>();
+
+        static void CreateList()
         {
             Random random = new Random();
             int sizeCarsList = 30;
-            
-            List<Car> cars = new List<Car>();
 
             for (int i = 0; i < sizeCarsList; i++)
             {
                 string licensePlate = LicensePlateGenerator.GenerateLicensePlate();
                 string carColor = CarColorGenerator.GenerateCarColor();
-  
+
                 Car car = new Car
                 {
                     LicensePlate = licensePlate,
@@ -26,6 +27,15 @@ namespace Main
                     Color = carColor
                 };
             }
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Inserir dados nos arquivo.json:");
+            CarController carController = new CarController();
+
+            if (carController.InsertJson(cars))
+                Console.WriteLine("Registros inseridos com sucesso!");
+            
         }
     }
 }

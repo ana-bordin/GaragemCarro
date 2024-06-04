@@ -12,6 +12,7 @@ namespace Repositories
     {
         private static string _path = "C:\\repositories\\GaragemCarro\\Files\\";
         private static string _dataJson = "Data.json";
+        
         public static void CheckExists()
         {
             if (!Directory.Exists(_path))
@@ -23,9 +24,8 @@ namespace Repositories
                 StreamWriter sw = new(_path + _dataJson);
                 sw.Close();
             }
-
         }
-        public bool Insert(List<Car> cars)
+        public bool InsertJson(List<Car> cars)
         {
             try
             {
