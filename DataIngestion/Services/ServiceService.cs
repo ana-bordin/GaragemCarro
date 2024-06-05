@@ -22,5 +22,15 @@ namespace Services
             return _serviceRepository.InsertAll(services);
         }
 
+        public bool Insert(Service service)
+        {
+            return _serviceRepository.Insert(service);
+        }
+
+        public List<Service> GetAll()
+        {
+            return _serviceRepository.GetAll();
+        }
+
     }
 }

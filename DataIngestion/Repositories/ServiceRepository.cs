@@ -63,10 +63,13 @@ namespace Repositories
                 }
             }
         }
-
         public List<Service> GetAll()
         {
-            throw new NotImplementedException();
+            using (var db = new SqlConnection(_conn))
+            {
+                db.Open();        
+                return db.Query<Service>("SELECT * FROM Service").ToList();
+            }
         }
     }
 

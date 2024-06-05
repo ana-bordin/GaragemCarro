@@ -16,5 +16,15 @@ namespace Controllers
         {
             return _serviceService.InsertAll(services);
         }
+
+        public bool Insert(Service service)
+        {
+            return _serviceService.Insert(service);
+        }
+
+        public List<Service> GetAll()
+        {
+            return _serviceService.GetAll();
+        }
     }
 }

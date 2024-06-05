@@ -22,5 +22,14 @@ namespace Services
             return _carServiceRepository.InsertAll(carsServices);
         }
 
+        public bool Insert(Car_Service carService)
+        {
+            return _carServiceRepository.Insert(carService);
+        }
+
+        public List<Car_Service> GetAll()
+        {
+            return _carServiceRepository.GetAll();
+        }
     }
 }

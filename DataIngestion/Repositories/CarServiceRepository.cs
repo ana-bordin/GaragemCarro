@@ -67,7 +67,12 @@ namespace Repositories
 
         public List<Car_Service> GetAll()
         {
-            throw new NotImplementedException();
+            using (var db = new SqlConnection(_conn))
+            {
+                db.Open();
+                var carsServices = db.Query<Car_Service>("SELECT * FROM Car_Service").AsList();
+                return carsServices;
+            }
         }
     }
 }

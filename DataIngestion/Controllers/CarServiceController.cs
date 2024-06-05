@@ -21,5 +21,15 @@ namespace Controllers
         {
             return _carServiceService.InsertAll(carsServices);
         }
+
+        public bool Insert(Car_Service carService)
+        {
+            return _carServiceService.Insert(carService);
+        }
+
+        public List<Car_Service> GetAll()
+        {
+            return _carServiceService.GetAll();
+        }
     }
 }
