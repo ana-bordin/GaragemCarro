@@ -11,17 +11,14 @@ namespace Controllers
         {
             _serviceService = new ServiceService();
         }
-
         public bool InsertAll(List<Service> services)
         {
             return _serviceService.InsertAll(services);
         }
-
         public bool Insert(Service service)
         {
             return _serviceService.Insert(service);
         }
-
         public List<Service> GetAll()
         {
             return _serviceService.GetAll();

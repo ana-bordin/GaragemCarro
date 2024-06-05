@@ -32,5 +32,13 @@ namespace Services
             return _carRepository.GetAll();
         }
 
+        public List<Car> GetAllRedCars()
+        {
+            return _carRepository.GetAllRedCars();
+        }
+        public List<Car> GetAllCarsBetween2010And2011()
+        {
+            return _carRepository.GetAllCarsBetween2010And2011();
+        }
     }
 }

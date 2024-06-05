@@ -74,5 +74,16 @@ namespace Repositories
                 return carsServices;
             }
         }
+
+        public List<Car> GetCarsInProgress()
+        {
+            using (var db = new SqlConnection(_conn))
+            {
+                db.Open();
+
+                var cars = db.Query<Car>("SELECT c.LicensePlate, c.Name, c.ModelYear, c.ManufactureYear, c.Color, cs.Status FROM Car_Service as cs JOIN Car as c ON c.LicensePlate = cs.LicensePlate WHERE cs.Status = 'false'").AsList();
+                return cars;
+            }        
+        }
     }
 }

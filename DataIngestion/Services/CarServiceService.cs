@@ -31,5 +31,10 @@ namespace Services
         {
             return _carServiceRepository.GetAll();
         }
+
+        public List<Car> GetCarsInProgress()
+        {
+            return _carServiceRepository.GetCarsInProgress();
+        }
     }
 }

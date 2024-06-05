@@ -7,5 +7,7 @@ namespace Repositories
         bool InsertAll(List<Car> cars);
         bool Insert(Car car);
         List<Car> GetAll();
+        List<Car> GetAllRedCars();
+        List<Car> GetAllCarsBetween2010And2011();
     }
 }

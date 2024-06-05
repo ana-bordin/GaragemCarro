@@ -16,20 +16,22 @@ namespace Controllers
         {
             _carServiceService = new CarServiceService();
         }
-
         public bool InsertAll(List<Car_Service> carsServices)
         {
             return _carServiceService.InsertAll(carsServices);
         }
-
         public bool Insert(Car_Service carService)
         {
             return _carServiceService.Insert(carService);
         }
-
         public List<Car_Service> GetAll()
         {
             return _carServiceService.GetAll();
         }
+        public List<Car> GetCarsInProgress()
+        {
+            return _carServiceService.GetCarsInProgress();
+        }
+
     }
 }

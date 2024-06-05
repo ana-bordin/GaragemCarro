@@ -76,5 +76,25 @@ namespace Repositories
                 return db.Query<Car>(query).ToList();
             }
         }
+
+        public List<Car> GetAllRedCars()
+        {
+            using (var db = new SqlConnection(_conn))
+            {
+                db.Open();
+                var query = "SELECT * FROM Car WHERE Color = 'Red' OR Color = 'Vermelho'";
+                return db.Query<Car>(query).ToList();
+            }
+        }
+
+        public List<Car> GetAllCarsBetween2010And2011()
+        {
+            using (var db = new SqlConnection(_conn))
+            {
+                db.Open();
+                var query = "SELECT * FROM Car WHERE ModelYear BETWEEN 2010 AND 2011";
+                return db.Query<Car>(query).ToList();
+            }
+        }
     }
 }
