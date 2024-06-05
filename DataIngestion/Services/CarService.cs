@@ -10,16 +10,16 @@ namespace Services
 {
     public class CarService
     {
-        ICarJsonRepository _carJsonRepository;
+        ICarRepository _carRepository;
 
         public CarService()
         {
-            _carJsonRepository = new CarJsonRepository();
+            _carRepository = new CarRepository();
         }
 
-        public bool InsertJson(List<Car> cars)
+        public bool InsertAll(List<Car> cars)
         {
-            return _carJsonRepository.InsertJson(cars);
+            return _carRepository.InsertAll(cars);
         }
 
     }

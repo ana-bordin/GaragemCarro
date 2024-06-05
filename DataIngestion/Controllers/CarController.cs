@@ -12,9 +12,9 @@ namespace Controllers
             _carService = new CarService();
         }
 
-        public bool InsertJson(List<Car> cars)
+        public bool InsertAll(List<Car> cars)
         {
-            return _carService.InsertJson(cars);
+            return _carService.InsertAll(cars);
         }
 
     }
