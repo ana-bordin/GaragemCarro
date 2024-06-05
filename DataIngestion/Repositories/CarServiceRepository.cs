@@ -49,6 +49,24 @@ namespace Repositories
 
         public bool Insert(Car_Service carsServices)
         {
+                using (var db = new SqlConnection(_conn))
+                {
+                    try
+                    {
+                        db.Open();
+                    db.Execute("INSERT INTO Car_Service (LicensePlate, ServiceId, Status) VALUES (@LicensePlate, @ServiceId, @Status)", new { LicensePlate = carsServices.Car.LicensePlate, ServiceId = carsServices.Service.Id, Status = carsServices.Status });
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Erro ao inserir no banco de dados. Erro:" + e.Message);
+                        return false;
+                    }
+                }
+            }
+
+        public List<Car_Service> GetAll()
+        {
             throw new NotImplementedException();
         }
     }

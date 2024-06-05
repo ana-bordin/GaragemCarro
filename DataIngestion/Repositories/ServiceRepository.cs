@@ -26,8 +26,8 @@ namespace Repositories
                         foreach (var service in Services)
                         {
                             var query = "INSERT INTO Service (Description) VALUES (@Description)";
-                            var result = db.Execute(query, new { Description = service.Description}, transaction);
-                            
+                            var result = db.Execute(query, new { Description = service.Description }, transaction);
+
                             if (result == 0)
                             {
                                 transaction.Rollback();
@@ -44,9 +44,27 @@ namespace Repositories
                         return false;
                     }
                 }
-            }   
+            }
         }
         public bool Insert(Service services)
+        {
+            using (var db = new SqlConnection(_conn))
+            {
+                try
+                {
+                    db.Open();
+                    db.Execute("INSERT INTO Service (Description) VALUES (@Description)", new { Description = services.Description });
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Erro ao inserir no banco de dados. Erro:" + e.Message);
+                    return false;
+                }
+            }
+        }
+
+        public List<Service> GetAll()
         {
             throw new NotImplementedException();
         }

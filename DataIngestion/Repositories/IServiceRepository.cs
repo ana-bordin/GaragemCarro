@@ -6,5 +6,7 @@ namespace Repositories
     {
         bool InsertAll(List<Service> Services);
         bool Insert(Service services);
+        List<Service> GetAll();
+
     }
 }
