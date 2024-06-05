@@ -5,16 +5,16 @@ using System.Configuration;
 
 namespace Repositories
 {
-    public class CarServiceRepository : ICarServiceRepository
+    public class ServiceRepository : IServiceRepository
     {
         private string _conn { get; set; }
 
-        public CarServiceRepository()
+        public ServiceRepository()
         {
             _conn = ConfigurationManager.ConnectionStrings["StringConnection"].ConnectionString;
         }
 
-        public bool InsertAll(List<Car_Service> carsServices)
+        public bool InsertAll(List<Service> Services)
         {
             using (var db = new SqlConnection(_conn))
             {
@@ -23,10 +23,10 @@ namespace Repositories
                 {
                     try
                     {
-                        foreach (var carService in carsServices)
+                        foreach (var service in Services)
                         {
-                            var query = "INSERT INTO Car_Service (LicensePlate, ServiceId, Status) VALUES (@LicensePlate, @ServiceId, @Status)";
-                            var result = db.Execute(query, new { LicensePlate = carService.Car.LicensePlate, ServiceId = carService.Service.Id, Status = carService.Status }, transaction);
+                            var query = "INSERT INTO Service (Description) VALUES (@Description)";
+                            var result = db.Execute(query, new { Description = service.Description}, transaction);
                             
                             if (result == 0)
                             {
@@ -44,12 +44,12 @@ namespace Repositories
                         return false;
                     }
                 }
-            }
+            }   
         }
-
-        public bool Insert(Car_Service carsServices)
+        public bool Insert(Service services)
         {
             throw new NotImplementedException();
         }
     }
+
 }

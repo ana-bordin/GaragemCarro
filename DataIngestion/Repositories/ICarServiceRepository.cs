@@ -2,9 +2,9 @@
 
 namespace Repositories
 {
-    public interface IServiceRepository
+    public interface ICarServiceRepository
     {
-        bool InsertAll(List<Service> services);
-        bool Insert(Service service);
+        bool InsertAll(List<Car_Service> carsServices);
+        bool Insert(Car_Service carService);
     }
 }

@@ -9,6 +9,7 @@ namespace Main
     {
         static int sizeCarsList = 30;
         static Random random = new Random();
+
         static List<Car> cars = new List<Car>();
         static List<Car_Service> carServices = new List<Car_Service>();
         static List<Service> services = new List<Service>()
@@ -29,8 +30,8 @@ namespace Main
             {
                 Car_Service carService = new Car_Service
                 {
-                    Car = cars[random.Next(0, cars.Count-1)],
-                    Service = services[random.Next(0, services.Count-1)],
+                    Car = cars[random.Next(0, cars.Count - 1)],
+                    Service = services[random.Next(0, services.Count - 1)],
                     Status = random.Next(0, 2) == 0 ? false : true
                 };
                 carServices.Add(carService);
@@ -68,6 +69,14 @@ namespace Main
             CarController carController = new CarController();
             if (carController.InsertAll(cars))
                 Console.WriteLine("Registros inseridos com sucesso!");
+
+            ServiceController serviceController = new ServiceController();
+            if (serviceController.InsertAll(services))
+                Console.WriteLine("Registros inseridos com sucesso!");
+
+            //CarServiceController carServiceController = new CarServiceController();
+            //if (carServiceController.InsertAll(carServices))
+            //    Console.WriteLine("Registros inseridos com sucesso!");
 
         }
     }

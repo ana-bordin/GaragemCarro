@@ -2,6 +2,8 @@
 using Microsoft.Data.SqlClient;
 using Models;
 using System.Configuration;
+using System.Data.Common;
+using System.Text;
 
 namespace Repositories
 {
@@ -50,6 +52,16 @@ namespace Repositories
         public bool Insert(Car car)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Car> GetAll()
+        {
+            using (var db = new SqlConnection(_conn))
+            {
+                db.Open();
+                var query = "SELECT * FROM Car";
+                return db.Query<Car>(query).ToList();
+            }
         }
     }
 }

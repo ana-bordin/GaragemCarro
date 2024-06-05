@@ -6,5 +6,7 @@ namespace Repositories
     {
         bool InsertAll(List<Car> cars);
         bool Insert(Car car);
+        List<Car> GetAll();
+
     }
 }
